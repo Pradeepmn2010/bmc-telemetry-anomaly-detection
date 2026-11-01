@@ -1,0 +1,29 @@
+ADC hwmon and D-Bus comparison
+Date: Sun Nov  1 13:31:23 UTC 2026
+D-Bus unique name: :1.48
+================================
+=== Sample 1 ===
+in1_input (mV)=1984
+in9_input (mV)=1984
+ADC0_12V=d 13.1815
+ADC8_12V=d 13.1815
+=== Sample 2 ===
+in1_input (mV)=2045
+in9_input (mV)=2045
+ADC0_12V=d 13.5842
+ADC8_12V=d 13.6634
+=== Sample 3 ===
+in1_input (mV)=2106
+in9_input (mV)=2106
+ADC0_12V=d 13.9868
+ADC8_12V=d 13.9868
+=== Sample 4 ===
+in1_input (mV)=2155
+in9_input (mV)=2167
+ADC0_12V=d 14.3036
+ADC8_12V=d 14.3894
+=== Sample 5 ===
+in1_input (mV)=2216
+in9_input (mV)=2216
+ADC0_12V=d 14.7129
+ADC8_12V=d 14.7921

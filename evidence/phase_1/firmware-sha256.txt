@@ -1,0 +1,2 @@
+f0603e7255b2b3c720f50928b9ea20fc2edc2d4c5eb0e3f119e4489e91c59820  testbed/images/ast2600-default-obmc.tar.gz
+9df7beea2097df647bd60054474c38eff3fa093e8ba8dfd5f2a4321e417e010b  testbed/images/ast2600-default.static.mtd
