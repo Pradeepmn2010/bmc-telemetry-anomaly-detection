@@ -83,3 +83,115 @@ conversion offset.
 3. Investigate D-Bus well-known-name lookup behavior.
 4. Perform a more carefully timed comparison.
 5. Preserve all additional raw logs and calculations.
+
+---
+
+## Experiment 2: ADC raw readings, voltage and threshold alarms
+
+### Experiment information
+
+- Date: 1 November 2026
+- Start time: 17:02:45 UTC
+- Platform: AST2600 QEMU emulation
+- Firmware: OpenBMC v11.04
+- ADC process PID: 449
+- D-Bus unique name: :1.48
+- hwmon device: hwmon18 (iio_hwmon)
+- Samples: 30
+- Nominal sleep interval: 2 seconds
+
+### Raw evidence
+
+File: adc_raw_dbus_threshold_20261101_170245.log
+
+SHA-256:
+
+f84ece76ecc21394feffb962ba1449585579624ae3b8b427281a5e7b1a91bcbf
+
+The CSV contains 30 measurement rows and nine columns. Its structure,
+column names and Boolean alarm fields passed validation.
+
+### Configuration
+
+Both ADC sensors use ScaleFactor 0.1515.
+
+| Parameter | ADC0_12V | ADC8_12V |
+|---|---:|---:|
+| Entity Manager Index | 0 | 8 |
+| ScaleFactor | 0.1515 | 0.1515 |
+| WarningHigh | 13.2 V | 13.2 V |
+| CriticalHigh | 13.8 V | 13.8 V |
+| WarningLow | 10.8 V | 10.8 V |
+| CriticalLow | 10.2 V | 10.2 V |
+
+### Observations
+
+1. Both raw hwmon inputs generally follow similar trends.
+2. The two raw inputs are identical in most samples, but occasional
+   differences of 12 raw units were observed.
+3. Both ADC voltage readings increase across most of the recorded
+   sequence.
+4. At 13.3861 V, ADC0 WarningAlarmHigh was true and
+   CriticalAlarmHigh was false.
+5. At 14.033 V, both ADC0 high-side warning and critical alarms
+   were true.
+6. ADC8 showed corresponding high-side alarm transitions.
+7. At the beginning of the experiment, ADC8 changed from 23.5248 V
+   to 7.67 V between consecutive samples, while the raw readings
+   were 3637 in both channels. ADC0 simultaneously reported
+   24.0858 V.
+
+### Important discrepancy
+
+At timestamp 2026-11-01T17:02:49Z:
+
+- ADC0 raw: 3637
+- ADC8 raw: 3637
+- ADC0 voltage: 24.0858 V
+- ADC8 voltage: 7.67 V
+
+This is a significant disagreement between the two reported D-Bus
+values despite identical raw readings.
+
+The sequential measurement procedure does not establish whether
+this resulted from asynchronous updates, stale values, channel
+processing, or another cause. Further controlled investigation
+is required.
+
+### Interpretation and limitations
+
+The high-side warning and critical alarm flags changed consistently
+with the observed voltage regions in this experiment.
+
+This supports the conclusion that high-side threshold monitoring
+is operating during the recorded transitions.
+
+However:
+
+- Only high-side alarm flags were captured.
+- Low-side warning and critical alarm behaviour remains unverified.
+- Raw hwmon and D-Bus reads were sequential, not simultaneous.
+- The sampling interval varied because of command execution time.
+- ADC0 and ADC8 readings were not always consistent with identical
+  raw input values.
+- The exact firmware conversion implementation remains unverified.
+- Emulator-generated values do not establish physical hardware
+  behaviour.
+
+### Current conclusions
+
+The ADC service exposes functioning sensor objects and publishes
+changing voltage readings. High-side threshold alarms were observed
+to assert during high-voltage readings.
+
+The raw-to-voltage conversion, channel mapping, asynchronous update
+behaviour and ADC0/ADC8 discrepancy remain open investigation items.
+
+### Next actions
+
+1. Investigate the ADC0/ADC8 discrepancy.
+2. Verify the exact installed ADC conversion implementation.
+3. Capture low-side warning and critical alarm flags.
+4. Investigate ADC update intervals and sampling consistency.
+5. Verify sensor channel mapping.
+6. Preserve subsequent experiments separately from original raw logs.

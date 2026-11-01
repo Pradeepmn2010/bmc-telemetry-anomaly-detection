@@ -86,3 +86,48 @@ Preserve original raw logs unchanged.
   hardware measurements.
 - Record errors and failed measurements rather than silently
   discarding them.
+
+---
+
+## Experiment 2: Raw ADC, D-Bus voltage and high-side alarms
+
+Use the existing SSH connection to the BMC.
+
+First identify the current ADC D-Bus unique name:
+
+    busctl --system list | grep ADCSensor
+
+Do not assume the previous unique name is still valid.
+
+Verify the hwmon inputs:
+
+    cat /sys/class/hwmon/hwmon18/in1_input
+    cat /sys/class/hwmon/hwmon18/in9_input
+
+For each sample, collect:
+
+- UTC timestamp
+- ADC0 raw hwmon value
+- ADC8 raw hwmon value
+- ADC0 D-Bus voltage
+- ADC0 WarningAlarmHigh
+- ADC0 CriticalAlarmHigh
+- ADC8 D-Bus voltage
+- ADC8 WarningAlarmHigh
+- ADC8 CriticalAlarmHigh
+
+Use 30 iterations with a nominal two-second sleep interval.
+
+The reads are sequential. Record the actual timestamps and do not
+treat the values as simultaneous measurements.
+
+Validate the transferred CSV on the host:
+
+- Check the expected nine columns.
+- Check the measurement row count.
+- Check for missing fields.
+- Validate Boolean alarm fields.
+- Calculate and record SHA-256.
+
+Preserve every raw experiment separately. Do not overwrite the
+original five-sample evidence.
