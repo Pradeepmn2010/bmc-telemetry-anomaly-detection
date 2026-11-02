@@ -30,3 +30,8 @@ results/
 .env.*
 !.env.example
 data/normal.csv
+
+# Downloaded QEMU source package and Debian source archives
+/qemu-8.2.2+ds/
+/qemu_*+ds*.dsc
+/qemu_*+ds*.tar.*
