@@ -1,0 +1,178 @@
+--- a/hw/adc/aspeed_adc.c
++++ b/hw/adc/aspeed_adc.c
+@@ -94,7 +94,11 @@
+
+     /* Poor man's sampling */
+     uint32_t value = s->regs[reg];
+-    s->regs[reg] = update_channels(s->regs[reg]);
++
++    if (!s->stable_sampling) {
++        /* Preserve the original synthetic sampling behavior */
++        s->regs[reg] = update_channels(s->regs[reg]);
++    }
+
+     if (breaks_threshold(s, reg)) {
+         s->regs[INTERRUPT_CONTROL] |= BIT(reg - DATA_CHANNEL_1_AND_0);
+@@ -257,6 +261,12 @@
+     AspeedADCEngineState *s = ASPEED_ADC_ENGINE(dev);
+
+     memcpy(s->regs, aspeed_adc_resets, sizeof(aspeed_adc_resets));
++
++    /* Initialize configured channel values in both sampling modes. */
++    for (int i = 0; i < s->nr_channels / 2; i++) {
++        s->regs[DATA_CHANNEL_1_AND_0 + i] =
++            s->channel_values[i] & ASPEED_ADC_LH_MASK;
++    }
+ }
+
+ static void aspeed_adc_engine_realize(DeviceState *dev, Error **errp)
+@@ -289,6 +299,32 @@
+ static Property aspeed_adc_engine_properties[] = {
+     DEFINE_PROP_UINT32("engine-id", AspeedADCEngineState, engine_id, 0),
+     DEFINE_PROP_UINT32("nr-channels", AspeedADCEngineState, nr_channels, 0),
++    DEFINE_PROP_BOOL("stable-sampling", AspeedADCEngineState,
++                     stable_sampling, false),
++    DEFINE_PROP_END_OF_LIST(),
++};
++static Property aspeed_adc_properties[] = {
++    DEFINE_PROP_BOOL("stable-sampling", AspeedADCState,
++                     stable_sampling, false),
++
++    DEFINE_PROP_UINT32("engine0-data0", AspeedADCState,
++                       channel_values[0][0], 0),
++    DEFINE_PROP_UINT32("engine0-data1", AspeedADCState,
++                       channel_values[0][1], 0),
++    DEFINE_PROP_UINT32("engine0-data2", AspeedADCState,
++                       channel_values[0][2], 0),
++    DEFINE_PROP_UINT32("engine0-data3", AspeedADCState,
++                       channel_values[0][3], 0),
++
++    DEFINE_PROP_UINT32("engine1-data0", AspeedADCState,
++                       channel_values[1][0], 0),
++    DEFINE_PROP_UINT32("engine1-data1", AspeedADCState,
++                       channel_values[1][1], 0),
++    DEFINE_PROP_UINT32("engine1-data2", AspeedADCState,
++                       channel_values[1][2], 0),
++    DEFINE_PROP_UINT32("engine1-data3", AspeedADCState,
++                       channel_values[1][3], 0),
++
+     DEFINE_PROP_END_OF_LIST(),
+ };
+
+@@ -357,7 +393,12 @@
+     sysbus_init_mmio(sbd, &s->mmio);
+
+     for (int i = 0; i < aac->nr_engines; i++) {
+-        Object *eng = OBJECT(&s->engines[i]);
++        AspeedADCEngineState *engine = &s->engines[i];
++        Object *eng = OBJECT(engine);
++
++        engine->stable_sampling = s->stable_sampling;
++        memcpy(engine->channel_values, s->channel_values[i],
++               sizeof(engine->channel_values));
+
+         if (!sysbus_realize(SYS_BUS_DEVICE(eng), errp)) {
+             return;
+@@ -374,9 +415,9 @@
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     AspeedADCClass *aac = ASPEED_ADC_CLASS(klass);
+-
+     dc->realize = aspeed_adc_realize;
+     dc->desc = "Aspeed Analog-to-Digital Converter";
++    device_class_set_props(dc, aspeed_adc_properties);
+     aac->nr_engines = 1;
+ }
+
+--- a/hw/arm/aspeed_ast2600.c
++++ b/hw/arm/aspeed_ast2600.c
+@@ -396,6 +396,21 @@
+     }
+
+     /* ADC */
++    object_property_set_bool(OBJECT(&s->adc), "stable-sampling",
++                             a->adc_stable_sampling, &error_abort);
++
++    for (i = 0; i < 4; i++) {
++        char *property = g_strdup_printf("engine0-data%d", i);
++        object_property_set_uint(OBJECT(&s->adc), property,
++                                 a->adc_channel_values[0][i], &error_abort);
++        g_free(property);
++
++        property = g_strdup_printf("engine1-data%d", i);
++        object_property_set_uint(OBJECT(&s->adc), property,
++                                 a->adc_channel_values[1][i], &error_abort);
++        g_free(property);
++    }
++
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
+         return;
+     }
+@@ -627,11 +642,34 @@
+     aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->sbc), 0, sc->memmap[ASPEED_DEV_SBC]);
+ }
+
++static Property aspeed_soc_ast2600_properties[] = {
++    DEFINE_PROP_BOOL("adc-stable-sampling", Aspeed2600SoCState,
++                     adc_stable_sampling, false),
++    DEFINE_PROP_UINT32("adc-engine0-data0", Aspeed2600SoCState,
++                       adc_channel_values[0][0], 0),
++    DEFINE_PROP_UINT32("adc-engine0-data1", Aspeed2600SoCState,
++                       adc_channel_values[0][1], 0),
++    DEFINE_PROP_UINT32("adc-engine0-data2", Aspeed2600SoCState,
++                       adc_channel_values[0][2], 0),
++    DEFINE_PROP_UINT32("adc-engine0-data3", Aspeed2600SoCState,
++                       adc_channel_values[0][3], 0),
++    DEFINE_PROP_UINT32("adc-engine1-data0", Aspeed2600SoCState,
++                       adc_channel_values[1][0], 0),
++    DEFINE_PROP_UINT32("adc-engine1-data1", Aspeed2600SoCState,
++                       adc_channel_values[1][1], 0),
++    DEFINE_PROP_UINT32("adc-engine1-data2", Aspeed2600SoCState,
++                       adc_channel_values[1][2], 0),
++    DEFINE_PROP_UINT32("adc-engine1-data3", Aspeed2600SoCState,
++                       adc_channel_values[1][3], 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
+ static void aspeed_soc_ast2600_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+     AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
+
++    device_class_set_props(dc, aspeed_soc_ast2600_properties);
+     dc->realize      = aspeed_soc_ast2600_realize;
+
+     sc->name         = "ast2600-a3";
+--- a/include/hw/adc/aspeed_adc.h
++++ b/include/hw/adc/aspeed_adc.h
+@@ -34,6 +34,8 @@
+     qemu_irq irq;
+     uint32_t engine_id;
+     uint32_t nr_channels;
++    bool stable_sampling;
++    uint32_t channel_values[4];
+     uint32_t regs[ASPEED_ADC_NR_REGS];
+ };
+
+@@ -44,6 +46,9 @@
+     MemoryRegion mmio;
+     qemu_irq irq;
+
++    bool stable_sampling;
++    uint32_t channel_values[2][4];
++
+     AspeedADCEngineState engines[2];
+ };
+
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -108,6 +108,9 @@
+ struct Aspeed2600SoCState {
+     AspeedSoCState parent;
+
++    bool adc_stable_sampling;
++    uint32_t adc_channel_values[2][4];
++
+     A15MPPrivState a7mpcore;
+     ARMCPU cpu[ASPEED_CPUS_NUM]; /* XXX belong to a7mpcore */
+ };

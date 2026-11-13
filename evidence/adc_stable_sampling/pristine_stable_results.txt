@@ -1,0 +1,52 @@
+PROJECT: BMC Telemetry Anomaly Detection
+EXPERIMENT: Fresh OpenBMC Image - Stable ADC Sampling
+DATE: 2026-11-08
+
+1. ENVIRONMENT
+QEMU Machine: ast2600-evb
+QEMU Version: 8.2.2
+OpenBMC Image: ast2600-pristine.static.mtd
+Image Size: 67108864 bytes (64 MiB)
+Image SHA256: 9df7beea2097df647bd60054474c38eff3fa093e8ba8dfd5f2a4321e417e010b
+ADC Stable Sampling: ON
+Configured ADC Register: 0x0014000A
+
+2. FILESYSTEM VALIDATION
+Command:
+dmesg | grep -iE 'jffs2|CRC error|I/O error'
+
+Observed:
+- JFFS2 initialized successfully.
+- Xattr subsystem completed.
+- No bad magic bitmask reported.
+- No inode CRC errors reported.
+- No data node CRC errors reported.
+- No I/O errors reported in the filtered output.
+
+3. ADC VALIDATION
+ADC Device: ast2600-adc0-0
+Interface: Linux IIO subsystem
+Channel 0 expected value: 10
+Channel 1 expected value: 20
+Sampling interval: 2 seconds
+Number of samples: 5
+
+4. OBSERVED RESULTS
+
+Sample    CH0    CH1
+1         10     20
+2         10     20
+3         10     20
+4         10     20
+5         10     20
+
+5. CONCLUSION
+The fresh OpenBMC image booted successfully.
+The AST2600 ADC IIO interface was accessible.
+ADC channels 0 and 1 retained their configured synthetic values
+across five observations at two-second intervals.
+
+Stable sampling behavior was validated for the two tested channels.
+
+NOTE:
+This experiment uses a QEMU synthetic ADC model, not physical ADC hardware.

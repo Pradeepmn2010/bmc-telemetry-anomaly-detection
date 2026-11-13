@@ -1,0 +1,33 @@
+PROJECT: BMC Telemetry Anomaly Detection
+EXPERIMENT: Control ADC Sampling
+DATE: 2026-11-08
+
+QEMU: AST2600 EVB
+OpenBMC: Fresh 64 MiB image
+Stable sampling: OFF
+Configured ADC register: 0x0014000A
+
+ADC sensor daemon: Reported stopped by experiment procedure.
+
+Measurements:
+Interval: approximately 2 seconds
+
+Sample    CH0    CH1
+1         187    70
+2         197    84
+3         207    98
+4         217    112
+5         227    126
+
+Observed increments per interval:
+CH0: +10
+CH1: +14
+
+QEMU synthetic model:
+Low 16-bit channel increment: +5 per register read
+High 16-bit channel increment: +7 per register read
+
+Conclusion:
+ADC readings continued increasing during manual IIO reads
+after the sensor daemon was stopped.
+This is consistent with the synthetic QEMU ADC update logic.

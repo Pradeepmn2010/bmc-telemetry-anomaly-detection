@@ -1,0 +1,23 @@
+PROJECT: BMC Telemetry Anomaly Detection
+EXPERIMENT: Stable ADC Sampling - Corrected QEMU Model
+DATE: 2026-11-08
+
+QEMU: AST2600 EVB
+OpenBMC: Fresh 64 MiB image
+Stable sampling: ON
+Configured ADC register: 0x0014000A
+ADC sensor daemon: INACTIVE
+
+Sampling interval: Approximately 2 seconds
+
+Sample    CH0    CH1
+1         10     20
+2         10     20
+3         10     20
+4         10     20
+5         10     20
+
+Conclusion:
+Both ADC channels retained constant synthetic values
+across five manual IIO observations with the ADC sensor
+daemon stopped.

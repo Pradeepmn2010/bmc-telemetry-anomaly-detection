@@ -35,3 +35,12 @@ data/normal.csv
 /qemu-8.2.2+ds/
 /qemu_*+ds*.dsc
 /qemu_*+ds*.tar.*
+
+# Local experimental QEMU source and build (reproducible patch is in docs/source)
+/qemu-ast2600-adc-experiment/
+
+# Local OpenBMC firmware images and experiment archives
+/testbed/images/
+
+# Local flash-test images
+/testbed/flash-test/*.img

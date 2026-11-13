@@ -1,0 +1,26 @@
+A/B EXPERIMENT COMPARISON
+Date: 2026-11-08
+
+Environment:
+- Fresh OpenBMC AST2600 image
+- QEMU 8.2.2 with modified ADC model
+- ADC sensor daemon stopped during recorded measurements
+- Manual IIO reads at approximately 2-second intervals
+
+EXPERIMENT A: STABLE SAMPLING ON
+CH0: 10, 10, 10, 10, 10
+CH1: 20, 20, 20, 20, 20
+
+EXPERIMENT B: STABLE SAMPLING OFF
+CH0: 187, 197, 207, 217, 227
+CH1: 70, 84, 98, 112, 126
+
+RESULT:
+Stable mode produced constant readings.
+Control mode produced increasing synthetic readings.
+
+NOTE:
+Both modes were configured with the same initial register
+values. Control-mode readings had already advanced before
+the recorded manual samples, due to earlier register reads.
+These are synthetic QEMU measurements, not physical sensor data.

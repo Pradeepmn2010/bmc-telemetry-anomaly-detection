@@ -1,0 +1,22 @@
+AST2600 QEMU Stable ADC Sampling Experiment
+QEMU version: 8.2.2
+ADC configuration:
+  stable-sampling=on
+  engine0-data0=0x0014000A
+
+Linux IIO devices:
+  iio:device0 = ast2600-adc0-0
+  iio:device1 = ast2600-adc1-1
+
+ADC scale:
+  2.441406250
+
+Repeated measurements:
+  Samples: 10
+  Interval: 2 seconds
+  ADC0 channel 0: 10 for all 10 samples
+  ADC0 channel 1: 20 for all 10 samples
+
+Result:
+  Both configured ADC channel values remained stable
+  across all 10 measurements.

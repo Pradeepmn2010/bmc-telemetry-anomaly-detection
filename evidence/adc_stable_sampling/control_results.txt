@@ -1,0 +1,29 @@
+AST2600 QEMU Synthetic ADC Sampling Control Experiment
+QEMU version: 8.2.2
+ADC configuration:
+  stable-sampling=off
+  engine0-data0=0x0014000A
+
+Observed measurements:
+Sample,ADC0_CH0,ADC0_CH1
+1,80,119
+2,90,133
+3,100,147
+4,110,161
+5,120,175
+
+Observed increments:
+  ADC0 CH0: +10 per interval
+  ADC0 CH1: +14 per interval
+
+Expected model increment per register read:
+  ADC0 CH0: +5
+  ADC0 CH1: +7
+
+Interpretation:
+  Dynamic sampling confirmed.
+  Background ADC polling may contribute additional reads.
+
+Warnings:
+  JFFS2 inode 116 read errors.
+  Multiple OpenBMC service coredump warnings.
