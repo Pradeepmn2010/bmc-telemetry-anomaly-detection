@@ -1,0 +1,13 @@
+{
+  "@odata.id": "/redfish/v1/Chassis/AST2600_EVB/ThermalSubsystem/ThermalMetrics",
+  "@odata.type": "#ThermalMetrics.v1_0_1.ThermalMetrics",
+  "Id": "ThermalMetrics",
+  "Name": "Thermal Metrics",
+  "TemperatureReadingsCelsius": [
+    {
+      "DataSourceUri": "/redfish/v1/Chassis/AST2600_EVB/Sensors/temperature_Ambient_Temp",
+      "Reading": 35.0
+    }
+  ],
+  "TemperatureReadingsCelsius@odata.count": 1
+}

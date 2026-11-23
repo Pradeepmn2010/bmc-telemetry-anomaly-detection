@@ -1,0 +1,6 @@
+{
+  "@odata.id": "/redfish/v1/Chassis/AST2600_EVB/EnvironmentMetrics",
+  "@odata.type": "#EnvironmentMetrics.v1_3_0.EnvironmentMetrics",
+  "Id": "EnvironmentMetrics",
+  "Name": "Chassis Environment Metrics"
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Chassis_collection",
+    "endpoint": "/redfish/v1/Chassis",
+    "captured_at_utc": "2026-11-23T18:07:30.416068+00:00",
+    "http_status": 200,
+    "file": "Chassis_collection.json",
+    "saved": true
+  },
+  {
+    "name": "Managers_collection",
+    "endpoint": "/redfish/v1/Managers",
+    "captured_at_utc": "2026-11-23T18:07:31.121528+00:00",
+    "http_status": 200,
+    "file": "Managers_collection.json",
+    "saved": true
+  },
+  {
+    "name": "Systems_collection",
+    "endpoint": "/redfish/v1/Systems",
+    "captured_at_utc": "2026-11-23T18:07:31.806539+00:00",
+    "http_status": 200,
+    "file": "Systems_collection.json",
+    "saved": true
+  },
+  {
+    "name": "TelemetryService",
+    "endpoint": "/redfish/v1/TelemetryService",
+    "captured_at_utc": "2026-11-23T18:07:32.168133+00:00",
+    "http_status": 200,
+    "file": "TelemetryService.json",
+    "saved": true
+  },
+  {
+    "name": "EnvironmentMetrics",
+    "endpoint": "/redfish/v1/Chassis/AST2600_EVB/EnvironmentMetrics",
+    "captured_at_utc": "2026-11-23T18:07:32.514486+00:00",
+    "http_status": 200,
+    "file": "EnvironmentMetrics.json",
+    "saved": true
+  },
+  {
+    "name": "ThermalSubsystem",
+    "endpoint": "/redfish/v1/Chassis/AST2600_EVB/ThermalSubsystem",
+    "captured_at_utc": "2026-11-23T18:07:32.901334+00:00",
+    "http_status": 200,
+    "file": "ThermalSubsystem.json",
+    "saved": true
+  },
+  {
+    "name": "ThermalMetrics",
+    "endpoint": "/redfish/v1/Chassis/AST2600_EVB/ThermalSubsystem/ThermalMetrics",
+    "captured_at_utc": "2026-11-23T18:07:33.229320+00:00",
+    "http_status": 200,
+    "file": "ThermalMetrics.json",
+    "saved": true
+  },
+  {
+    "name": "Fans_collection",
+    "endpoint": "/redfish/v1/Chassis/AST2600_EVB/ThermalSubsystem/Fans",
+    "captured_at_utc": "2026-11-23T18:07:33.576129+00:00",
+    "http_status": 200,
+    "file": "Fans_collection.json",
+    "saved": true
+  },
+  {
+    "name": "PowerSupplies_collection",
+    "endpoint": "/redfish/v1/Chassis/AST2600_EVB/PowerSubsystem/PowerSupplies",
+    "captured_at_utc": "2026-11-23T18:07:33.915517+00:00",
+    "http_status": 200,
+    "file": "PowerSupplies_collection.json",
+    "saved": true
+  }
+]
