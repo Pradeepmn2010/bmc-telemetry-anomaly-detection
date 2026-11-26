@@ -1,0 +1,869 @@
+qemu-system-arm: warning: nic ftgmac100.1 has no peer
+qemu-system-arm: warning: nic ftgmac100.2 has no peer
+qemu-system-arm: warning: nic ftgmac100.3 has no peer
+
+U-Boot SPL 2019.04-v00.04.26 (Jun 03 2026 - 07:18:14 +0000)
+Trying to boot from RAM
+## Checking hash(es) for Image uboot ... OK
+## Checking hash(es) for Image fdt ... OK
+
+
+U-Boot 2019.04-v00.04.26 (Jun 03 2026 - 07:18:14 +0000)
+
+SOC: AST2600-A3 
+eSPI Mode: SIO:Enable : SuperIO-2e
+Eth: MAC0: RGMII, MAC1: RGMII, MAC2: RGMII, MAC3: RGMII
+Model: AST2600 EVB
+DRAM:  already initialized, 1008 MiB (capacity:1024 MiB, VGA:64 MiB, ECC:off)
+RC Bridge phy@1e6ed200 : Link down
+MMC:   sdhci_slot0@100: 1, sdhci_slot1@200: 2, emmc_slot0@100: 0
+Loading Environment from SPI Flash... SF: Detected mx66u51235f with page size 256 Bytes, erase size 4 KiB, total 64 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial@1e784000
+Out:   serial@1e784000
+Err:   serial@1e784000
+Model: AST2600 EVB
+Net:   
+Warning: ftgmac@1e660000 (eth0) using random MAC address - 86:84:8b:5f:56:cb
+eth0: ftgmac@1e660000
+Warning: ftgmac@1e680000 (eth1) using random MAC address - 32:d3:5b:89:07:a8
+, eth1: ftgmac@1e680000
+Warning: ftgmac@1e670000 (eth2) using random MAC address - 66:bb:56:de:cd:12
+, eth2: ftgmac@1e670000
+Warning: ftgmac@1e690000 (eth3) using random MAC address - da:41:40:87:89:17
+, eth3: ftgmac@1e690000
+Hit any key to stop autoboot:  2  1  0 
+Boot from spi
+## Loading kernel from FIT Image at 83000000 ...
+   Using 'conf-aspeed-ast2600-evb.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel-1' kernel subimage
+     Description:  Linux kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x83000140
+     Data Size:    6114632 Bytes = 5.8 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x80000000
+     Entry Point:  0x80000000
+     Hash algo:    sha256
+     Hash value:   3c995adf87d4cb2cfcd91633580a29392b0e86f618ce613b1ac71238efddce0b
+   Verifying Hash Integrity ... sha256+ OK
+## Loading ramdisk from FIT Image at 83000000 ...
+   Using 'conf-aspeed-ast2600-evb.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'ramdisk-1' ramdisk subimage
+     Description:  obmc-phosphor-initramfs
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x835e3918
+     Data Size:    1192400 Bytes = 1.1 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha256
+     Hash value:   f05feb4b92ba84bbaaf544a8f4d346639d5918b380601e4cd180e4a8ae765320
+   Verifying Hash Integrity ... sha256+ OK
+## Loading fdt from FIT Image at 83000000 ...
+   Using 'conf-aspeed-ast2600-evb.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'fdt-aspeed-ast2600-evb.dtb' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x835d4f9c
+     Data Size:    59566 Bytes = 58.2 KiB
+     Architecture: ARM
+     Hash algo:    sha256
+     Hash value:   b82f576966fb4a215fd2aa884b657ff53ce62fea33ba0938ce67b06fe92f11b3
+   Verifying Hash Integrity ... sha256+ OK
+   Booting using the fdt blob at 0x835d4f9c
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 8fedc000, end 8ffff1d0 ... OK
+   Loading Device Tree to 8feca000, end 8fedb8ad ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0xf00
+[    0.000000] Linux version 6.18.50-v00.08.04-g76457d3afe2b (oe-user@oe-host) (arm-openbmc-linux-gnueabi-gcc (GCC) 16.1.0, GNU ld (GNU Binutils) 2.46.1) #1 SMP Thu Oct  1 10:04:58 CST 2026
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: AST2600 EVB
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] Reserved memory: created CMA memory pool at 0xbd000000, size 32 MiB
+[    0.000000] OF: reserved mem: initialized node video, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xbd000000..0xbeffffff (32768 KiB) map reusable video
+[    0.000000] Reserved memory: created CMA memory pool at 0xb9000000, size 64 MiB
+[    0.000000] OF: reserved mem: initialized node rvas, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb9000000..0xbcffffff (65536 KiB) map reusable rvas
+[    0.000000] Reserved memory: created CMA memory pool at 0xb8000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node framebuffer, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb8000000..0xb8ffffff (16384 KiB) map reusable framebuffer
+[    0.000000] Reserved memory: created DMA memory pool at 0xb6000000, size 32 MiB
+[    0.000000] OF: reserved mem: initialized node ssp_memory, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb6000000..0xb7ffffff (32768 KiB) nomap non-reusable ssp_memory
+[    0.000000] cma: Reserved 16 MiB at 0xb5000000
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000080000000-0x00000000beffffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x00000000b0ffffff]
+[    0.000000]   node   0: [mem 0x00000000b1000000-0x00000000b111ffff]
+[    0.000000]   node   0: [mem 0x00000000b1120000-0x00000000b5ffffff]
+[    0.000000]   node   0: [mem 0x00000000b6000000-0x00000000b7ffffff]
+[    0.000000]   node   0: [mem 0x00000000b8000000-0x00000000beffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x00000000beffffff]
+[    0.000000] Reserved memory: created DMA memory pool at 0xb1000000, size 0 MiB
+[    0.000000] OF: reserved mem: initialized node mctp0_reserved@b1000000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb1000000..0xb100ffff (64 KiB) nomap non-reusable mctp0_reserved@b1000000
+[    0.000000] Reserved memory: created DMA memory pool at 0xb1010000, size 0 MiB
+[    0.000000] OF: reserved mem: initialized node mctp1_reserved@b1010000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb1010000..0xb101ffff (64 KiB) nomap non-reusable mctp1_reserved@b1010000
+[    0.000000] Reserved memory: created DMA memory pool at 0xb1020000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node bmc-dev-memory@b1020000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb1020000..0xb111ffff (1024 KiB) nomap non-reusable bmc-dev-memory@b1020000
+[    0.000000] percpu: Embedded 19 pages/cpu s45452 r8192 d24180 u77824
+[    0.000000] Kernel command line: console=ttyS4,115200n8 root=/dev/ram rw
+[    0.000000] printk: log buffer data + meta data: 65536 + 204800 = 270336 bytes
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 258048
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] ftrace: allocating 44312 entries in 130 pages
+[    0.000000] ftrace: allocated 130 pages with 2 groups
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] RCU Tasks Rude: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.000000] arch_timer: cp15 timer running at 1200.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1fffffffffffffff max_cycles: 0x114c1bbbeec, max_idle_ns: 440795229572 ns
+[    0.000222] sched_clock: 61 bits at 1200MHz, resolution 0ns, wraps every 2199023255551ns
+[    0.000391] Switching to timer-based delay loop, resolution 0ns
+[    0.007735] Console: colour dummy device 80x30
+[    0.014196] Calibrating delay loop (skipped), value calculated using timer frequency.. 2400.00 BogoMIPS (lpj=12000000)
+[    0.014409] CPU: Testing write buffer coherency: ok
+[    0.016027] pid_max: default: 32768 minimum: 301
+[    0.026238] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.026304] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.083759] Setting up static identity map for 0x80100000 - 0x80100060
+[    0.085112] rcu: Hierarchical SRCU implementation.
+[    0.085148] rcu: 	Max phase no-delay instances is 1000.
+[    0.086565] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.092239] ASPEED AST2600 rev A3 (05030303)
+[    0.094533] smp: Bringing up secondary CPUs ...
+[    0.106213] smp: Brought up 1 node, 2 CPUs
+[    0.106469] SMP: Total of 2 processors activated (4800.00 BogoMIPS).
+[    0.106531] CPU: All CPU(s) started in SVC mode.
+[    0.119979] Memory: 832236K/1032192K available (14336K kernel code, 1190K rwdata, 3548K rodata, 1024K init, 205K bss, 65496K reserved, 131072K cma-reserved, 0K highmem)
+[    0.130222] devtmpfs: initialized
+[    0.158087] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.197754] posixtimers hash table entries: 1024 (order: 1, 8192 bytes, linear)
+[    0.198087] futex hash table entries: 512 (32768 bytes on 1 NUMA nodes, total 32 KiB, linear).
+[    0.207672] pinctrl core: initialized pinctrl subsystem
+[    0.233377] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.246965] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.252236] thermal_sys: Registered thermal governor 'step_wise'
+[    0.254727] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.254852] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.287317] /ahb/interrupt-controller@40461000: Fixed dependency cycle(s) with /ahb/interrupt-controller@40461000
+[    0.289400] /ahb/apb@1e6e0000/pcie@1e770000: Fixed dependency cycle(s) with /ahb/apb@1e6e0000/pcie@1e770000
+[    0.299437] /ahb/apb@1e6e0000/pcie@1e770000: Fixed dependency cycle(s) with /ahb/apb@1e6e0000/pcie@1e770000
+[    0.314144] /ahb/apb@1e6e0000/pcie@1e770000: Fixed dependency cycle(s) with /ahb/apb@1e6e0000/pcie@1e770000
+[    0.387361] AST2600 secure boot disabled
+[    0.391531] SCSI subsystem initialized
+[    0.393327] usbcore: registered new interface driver usbfs
+[    0.393801] usbcore: registered new interface driver hub
+[    0.394026] usbcore: registered new device driver usb
+[    0.394825] mc: Linux media interface: v0.10
+[    0.394940] videodev: Linux video capture interface: v2.00
+[    0.395154] pps_core: LinuxPPS API ver. 1 registered
+[    0.395171] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.395262] PTP clock support registered
+[    0.408683] mctp: management component transport protocol core
+[    0.408720] NET: Registered PF_MCTP protocol family
+[    0.410975] vgaarb: loaded
+[    0.422811] clocksource: Switched to clocksource arch_sys_counter
+[    0.469917] NET: Registered PF_INET protocol family
+[    0.471102] IP idents hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.476771] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.476856] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.476918] TCP established hash table entries: 8192 (order: 3, 32768 bytes, linear)
+[    0.477110] TCP bind hash table entries: 8192 (order: 5, 131072 bytes, linear)
+[    0.477408] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.478583] UDP hash table entries: 512 (order: 3, 28672 bytes, linear)
+[    0.478784] UDP-Lite hash table entries: 512 (order: 3, 28672 bytes, linear)
+[    0.480332] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.489476] RPC: Registered named UNIX socket transport module.
+[    0.489544] RPC: Registered udp transport module.
+[    0.489555] RPC: Registered tcp transport module.
+[    0.489563] RPC: Registered tcp-with-tls transport module.
+[    0.489571] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.489805] PCI: CLS 0 bytes, default 64
+[    0.498834] Trying to unpack rootfs image as initramfs...
+[    0.524060] workingset: timestamp_bits=30 max_order=18 bucket_order=0
+[    0.534141] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.545311] jffs2: version 2.2. (SUMMARY)  © 2001-2006 Red Hat, Inc.
+[    0.548633] NET: Registered PF_ALG protocol family
+[    0.549667] io scheduler bfq registered
+[    0.617209] aspeed-pcie 1e770000.pcie: host bridge /ahb/apb@1e6e0000/pcie@1e770000 ranges:
+[    0.617960] aspeed-pcie 1e770000.pcie:      MEM 0x0060000000..0x007fffffff -> 0x0060000000
+[    0.633197] ipmi-bt-host 1e789140.ibt: initialised channel 0 at IO address 0xe4
+[    0.653077] aspeed-kcs-bmc 1e789024.kcs: Initialised IPMI client for channel 1
+[    0.653197] aspeed-kcs-bmc 1e789024.kcs: Initialised channel 1 at IO address 0xca0
+[    0.654447] aspeed-kcs-bmc 1e789028.kcs: Initialised IPMI client for channel 2
+[    0.654472] aspeed-kcs-bmc 1e789028.kcs: Initialised channel 2 at IO address 0xca8
+[    0.655221] aspeed-kcs-bmc 1e78902c.kcs: Initialised IPMI client for channel 3
+[    0.655242] aspeed-kcs-bmc 1e78902c.kcs: Initialised channel 3 at IO address 0xca2
+[    0.656368] aspeed-kcs-bmc 1e789114.kcs: Initialised IPMI client for channel 4
+[    0.656458] aspeed-kcs-bmc 1e789114.kcs: Initialised channel 4 at IO address 0xca4
+[    0.657588] aspeed-kcs-bmc 1e789824.pcie-kcs: Initialised IPMI client for channel 5
+[    0.657612] aspeed-kcs-bmc 1e789824.pcie-kcs: Initialised channel 5 at IO address 0x3a0
+[    0.658272] aspeed-kcs-bmc 1e789828.pcie-kcs: Initialised IPMI client for channel 6
+[    0.658291] aspeed-kcs-bmc 1e789828.pcie-kcs: Initialised channel 6 at IO address 0x3a8
+[    0.658921] aspeed-kcs-bmc 1e78982c.pcie-kcs: Initialised IPMI client for channel 7
+[    0.658941] aspeed-kcs-bmc 1e78982c.pcie-kcs: Initialised channel 7 at IO address 0x3a2
+[    0.662843] aspeed-kcs-bmc 1e789914.pcie-kcs: Initialised IPMI client for channel 8
+[    0.662882] aspeed-kcs-bmc 1e789914.pcie-kcs: Initialised channel 8 at IO address 0x3a4
+[    0.694259] aspeed-uart-routing 1e789098.uart-routing: module loaded
+[    0.709162] aspeed-mctp 1e6e8000.mctp: assigned reserved memory node mctp0_reserved@b1000000
+[    0.775430] aspeed-espi 1e6ee000.espi: module loaded
+[    0.783095] Serial: 8250/16550 driver, 17 ports, IRQ sharing enabled
+[    0.807820] printk: legacy console [ttyS4] disabled
+[    0.810915] 1e784000.serial: ttyS4 at MMIO 0x1e784000 (irq = 49, base_baud = 1500000) is a 16550A
+[    0.813774] printk: legacy console [ttyS4] enabled
+[    0.880611] 1e78e000.serial: ttyS2 at MMIO 0x1e78e000 (irq = 50, base_baud = 115384) is a 16550A
+[    0.885106] 1e78f000.serial: ttyS3 at MMIO 0x1e78f000 (irq = 51, base_baud = 115384) is a 16550A
+[    0.888701] 1e790400.serial: ttyS9 at MMIO 0x1e790400 (irq = 52, base_baud = 115384) is a 16550A
+[    0.892221] 1e790500.serial: ttyS10 at MMIO 0x1e790500 (irq = 53, base_baud = 115384) is a 16550A
+[    0.898392] timeriomem_rng 1e6e2524.hwrng: 32bits from 0x(ptrval) @ 1us
+[    0.900611] aspeed-trng 1e6e2530.hwrng: invalid or missing rng-mode, defaulting to 3
+[    0.903427] aspeed-trng 1e6e2530.hwrng: Aspeed Hardware RNG successfully registered
+[    0.907307] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.914604] random: crng init done
+[    0.966473] brd: module loaded
+[    0.983164] loop: module loaded
+[    1.100388] spi-aspeed-smc 1e620000.spi: user mode and normal read are used
+[    1.106581] spi-nor spi0.0: supply vcc not found, using dummy regulator
+[    1.111950] spi-nor spi0.0: BFPT parsing failed. Please consider using SPI_NOR_SKIP_SFDP when declaring the flash
+[    1.113458] spi-nor spi0.0: probe with driver spi-nor failed with error -22
+[    1.117634] spi-nor spi0.1: supply vcc not found, using dummy regulator
+[    1.118503] spi-nor spi0.1: unrecognized JEDEC id bytes: 00 00 00 00 00 00
+[    1.120645] spi-aspeed-smc 1e630000.spi: user mode and normal read are used
+[    1.123250] spi-nor spi1.0: supply vcc not found, using dummy regulator
+[    1.123987] spi-nor spi1.0: BFPT parsing failed. Please consider using SPI_NOR_SKIP_SFDP when declaring the flash
+[    1.124403] spi-nor spi1.0: probe with driver spi-nor failed with error -22
+[    1.126338] spi-aspeed-smc 1e631000.spi: user mode and normal read are used
+[    1.129814] spi-nor spi2.0: supply vcc not found, using dummy regulator
+[    1.131345] spi-nor spi2.0: unrecognized JEDEC id bytes: 00 00 00 00 00 00
+[    1.135357] Freeing initrd memory: 1168K
+[    1.368288] ftgmac100 1e660000.ethernet: Read MAC address 86:84:8b:5f:56:cb from chip
+[    1.370920] RTL8211E Gigabit Ethernet 1e650000.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650000.mdio-1:00, irq=POLL)
+[    1.375078] ftgmac100 1e660000.ethernet eth0: irq 54, mapped at d9d7a694
+[    1.376793] ftgmac100 1e680000.ethernet: Read MAC address 32:d3:5b:89:07:a8 from chip
+[    1.377433] RTL8211E Gigabit Ethernet 1e650008.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650008.mdio-1:00, irq=POLL)
+[    1.378801] ftgmac100 1e680000.ethernet eth1: irq 55, mapped at 33a7fb11
+[    1.379939] ftgmac100 1e670000.ethernet: Read MAC address 66:bb:56:de:cd:12 from chip
+[    1.380619] RTL8211E Gigabit Ethernet 1e650010.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650010.mdio-1:00, irq=POLL)
+[    1.383249] ftgmac100 1e670000.ethernet eth2: irq 56, mapped at 6e3b3172
+[    1.384715] ftgmac100 1e690000.ethernet: Read MAC address da:41:40:87:89:17 from chip
+[    1.385617] RTL8211E Gigabit Ethernet 1e650018.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650018.mdio-1:00, irq=POLL)
+[    1.387223] ftgmac100 1e690000.ethernet eth3: irq 57, mapped at 6523086b
+[    1.388044] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.388273] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.388697] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.388905] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.389301] MCTP I2C interface driver
+[    1.389989] usbcore: registered new interface driver mctp-usb
+[    1.390375] usbcore: registered new interface driver asix
+[    1.390632] usbcore: registered new interface driver ax88179_178a
+[    1.390906] usbcore: registered new interface driver cdc_ether
+[    1.391191] usbcore: registered new interface driver cdc_eem
+[    1.391462] usbcore: registered new interface driver net1080
+[    1.391719] usbcore: registered new interface driver cdc_subset
+[    1.392056] usbcore: registered new interface driver zaurus
+[    1.392849] usbcore: registered new interface driver cdc_ncm
+[    1.393316] usbcore: registered new interface driver r8153_ecm
+[    1.408653] platform-uhci 1e6b0000.usb: Detected 2 ports from device-tree
+[    1.409090] platform-uhci 1e6b0000.usb: Enabled Aspeed implementation workarounds
+[    1.409421] platform-uhci 1e6b0000.usb: Enabled Aspeed UHCI FIFO/DMA workaround
+[    1.414210] ehci-platform 1e6a3000.usb: EHCI Host Controller
+[    1.415719] ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+[    1.421467] platform-uhci 1e6b0000.usb: Generic UHCI Host Controller
+[    1.421854] platform-uhci 1e6b0000.usb: new USB bus registered, assigned bus number 2
+[    1.424640] platform-uhci 1e6b0000.usb: irq 59, io mem 0x1e6b0000
+[    1.425272] platform-uhci 1e6b0000.usb: Device does not have specific DMA pool
+[    1.433509] ehci-platform 1e6a3000.usb: irq 58, io mem 0x1e6a3000
+[    1.435375] usb usb2: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 6.18
+[    1.435751] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.436053] usb usb2: Product: Generic UHCI Host Controller
+[    1.436231] usb usb2: Manufacturer: Linux 6.18.50-v00.08.04-g76457d3afe2b uhci_hcd
+[    1.436667] usb usb2: SerialNumber: 1e6b0000.usb
+[    1.441724] hub 2-0:1.0: USB hub found
+[    1.443567] hub 2-0:1.0: 2 ports detected
+[    1.449559] usbcore: registered new interface driver cdc_acm
+[    1.449827] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    1.450487] usbcore: registered new interface driver usb-storage
+[    1.453384] ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+[    1.454805] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.18
+[    1.455618] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.456421] usb usb1: Product: EHCI Host Controller
+[    1.457260] usb usb1: Manufacturer: Linux 6.18.50-v00.08.04-g76457d3afe2b ehci_hcd
+[    1.457988] usb usb1: SerialNumber: 1e6a3000.usb
+[    1.468373] hub 1-0:1.0: USB hub found
+[    1.469255] hub 1-0:1.0: 6 ports detected
+[    1.475620] aspeed_vhub 1e6a0000.usb-vhub: Initialized virtual hub in USB2 mode
+[    1.483973] aspeed-rtc 1e781000.rtc: registered as rtc0
+[    1.485438] aspeed-rtc 1e781000.rtc: setting system clock to 1970-01-01T01:01:01 UTC (3661)
+[    1.487006] i2c_dev: i2c /dev entries driver
+[    1.488286] platform-uhci 1e6b0000.usb: Controller not stopped yet!
+[    1.500041] i2c_ast2600 1e78a280.i2c: i2c [4]: adapter [100 KHz] mode [1] version [0]
+[    1.504829] i2c_ast2600 1e78a300.i2c: i2c [5]: adapter [100 KHz] mode [1] version [0]
+[    1.507644] ipmb-dev 6-0012: i2c_slave_register: client slave flag not set. You might see address collisions
+[    1.508165] i2c_ast2600 1e78a380.i2c: i2c [6]: adapter [100 KHz] mode [1] version [0]
+[    1.511999] at24 7-0050: supply vcc not found, using dummy regulator
+[    1.518319] at24 7-0050: 1024 byte 24c08 EEPROM, writable, 16 bytes/write
+[    1.518822] i2c_ast2600 1e78a400.i2c: i2c [7]: adapter [100 KHz] mode [1] version [0]
+[    1.521091] i2c_ast2600 1e78a480.i2c: i2c [8]: adapter [100 KHz] mode [1] version [0]
+[    1.524292] i2c_ast2600 1e78a500.i2c: i2c [9]: adapter [100 KHz] mode [1] version [0]
+[    3.734551] i3c i3c-0: Enter halt state failed: -110 0x0 0x0
+[    3.734991] i3c i3c-0: SDA stuck low! Try to recover the bus...
+[    3.735580] i3c i3c-0: Failed to recover the bus
+[    4.869167] i3c i3c-0: Exit halt state failed: -110 0x0 0x0
+[    4.871531] ast2600-i3c-master 1e7a2000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[    7.096461] i3c i3c-1: Enter halt state failed: -110 0x0 0x0
+[    7.096732] i3c i3c-1: SDA stuck low! Try to recover the bus...
+[    7.097113] i3c i3c-1: Failed to recover the bus
+[    8.226796] i3c i3c-1: Exit halt state failed: -110 0x0 0x0
+[    8.227374] ast2600-i3c-master 1e7a3000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   10.427918] i3c i3c-2: Enter halt state failed: -110 0x0 0x0
+[   10.428193] i3c i3c-2: SDA stuck low! Try to recover the bus...
+[   10.428581] i3c i3c-2: Failed to recover the bus
+[   11.563838] i3c i3c-2: Exit halt state failed: -110 0x0 0x0
+[   11.564526] ast2600-i3c-master 1e7a4000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   13.720696] i3c i3c-3: Enter halt state failed: -110 0x0 0x0
+[   13.720987] i3c i3c-3: SDA stuck low! Try to recover the bus...
+[   13.721289] i3c i3c-3: Failed to recover the bus
+[   14.853110] i3c i3c-3: Exit halt state failed: -110 0x0 0x0
+[   14.853793] ast2600-i3c-master 1e7a5000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   17.081915] i3c i3c-5: Enter halt state failed: -110 0x0 0x0
+[   17.083290] i3c i3c-5: SDA stuck low! Try to recover the bus...
+[   17.083642] i3c i3c-5: Failed to recover the bus
+[   18.208244] i3c i3c-5: Exit halt state failed: -110 0x0 0x0
+[   18.208759] ast2600-i3c-master 1e7a7000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   18.217574] aspeed-video 1e700000.video: irq 74
+[   18.218173] aspeed-video 1e700000.video: assigned reserved memory node video
+[   18.241158] aspeed-video 1e700000.video: alloc mem size(18493440) at 0xbd000000 for pool
+[   18.246766] aspeed-video 1e700000.video: aspeed-video0 registered as /dev/video0
+[   18.247858] Driver for 1-wire Dallas network protocol.
+[   18.251912] adt7475 7-002e: Error configuring attenuator bypass
+[   18.255275] adt7475 7-002e: ADT7490 device, revision 2
+[   18.255681] adt7475 7-002e: Optional features: in4 pwm2
+[   18.256001] adt7475 7-002e: Bypassing attenuators on: in1 in3 in4
+[   18.265505] lm75 8-004d: supply vs not found, using dummy regulator
+[   18.268805] hwmon hwmon2: temp1_input not attached to any thermal zone
+[   18.269256] lm75 8-004d: hwmon2: sensor 'lm75'
+[   18.284146] device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+[   18.287789] sdhci: Secure Digital Host Controller Interface driver
+[   18.288111] sdhci: Copyright(c) Pierre Ossman
+[   18.288305] sdhci-pltfm: SDHCI platform and OF driver helper
+[   18.296354] aspeed_crypto 1e6d0000.crypto: will run requests pump with realtime priority
+[   18.302630] sdhci-aspeed 1e750100.sdhci: Configured for slot 0
+[   18.313618] aspeed_crypto 1e6d0000.crypto: will run requests pump with realtime priority
+[   18.325827] aspeed_crypto 1e6d0000.crypto: Aspeed Crypto Accelerator successfully registered
+[   18.347225] aspeed_acry 1e6fa000.crypto: will run requests pump with realtime priority
+[   18.353911] aspeed_acry 1e6fa000.crypto: Aspeed ACRY Accelerator successfully registered
+[   18.357431] usbcore: registered new interface driver usbhid
+[   18.357939] usbhid: USB HID core driver
+[   18.372972] mmc0: SDHCI controller on 1e750100.sdhci [1e750100.sdhci] using ADMA
+[   18.442727] mmc0: Failed to initialize a non-removable card
+[   18.447035] NET: Registered PF_INET6 protocol family
+[   18.462750] Segment Routing with IPv6
+[   18.463252] In-situ OAM (IOAM) with IPv6
+[   18.464213] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[   18.467813] NET: Registered PF_PACKET protocol family
+[   18.469566] 8021q: 802.1Q VLAN Support v1.8
+[   18.470850] Registering SWP/SWPB emulation handler
+[   18.510266] aspeed-pcie 1e770000.pcie: host bridge /ahb/apb@1e6e0000/pcie@1e770000 ranges:
+[   18.510763] aspeed-pcie 1e770000.pcie:      MEM 0x0060000000..0x007fffffff -> 0x0060000000
+[   18.640592] aspeed-pcie 1e770000.pcie: PCI host bridge to bus 0000:00
+[   18.643027] pci_bus 0000:00: root bus resource [bus 00-ff]
+[   18.644841] pci_bus 0000:00: root bus resource [mem 0x60000000-0x7fffffff]
+[   18.650873] aspeed-pcie 1e770000.pcie: 00:08.0 CR tx timeout sts: 0x00000000
+[   18.662164] PCI: bus0: Fast back to back transfers enabled
+[   18.665948] pci_bus 0000:00: resource 4 [mem 0x60000000-0x7fffffff]
+[   18.671409] aspeed_usb_phy 1e6a2800.uphyb: Initialized USB PHY
+[   18.684696] sdhci-aspeed 1e740100.sdhci: Configured for slot 0
+[   18.685043] sdhci-aspeed 1e740200.sdhci: Configured for slot 1
+[   18.693099] netconsole: network logging started
+[   18.696070] clk: Disabling unused clocks
+[   18.736333] mmc2: SDHCI controller on 1e740200.sdhci [1e740200.sdhci] using ADMA
+[   18.745328] mmc1: SDHCI controller on 1e740100.sdhci [1e740100.sdhci] using ADMA
+[   18.828249] Freeing unused kernel image (initmem) memory: 1024K
+[   18.895097] Run /init as init process
+grep: /sys/class/mtd/*/name: No such file or directory
+grep: /sys/class/mtd/*/name: No such file or directory
+grep: /sys/class/mtd/*/name: No such file or directory
+grep: /sys/class/mtd/*/name: No such file or directory
+rofs =  squashfs   rwfs =  jffs2
+[   20.181639] /dev/mtdblock: Can't lookup blockdev
+mount: mounting /dev/mtdblock on run/initramfs/ro failed: No such file or directory
+[   20.227304] MTD: Couldn't look up '/dev/mtdblock': -2
+mount: mounting /dev/mtdblock on run/initramfs/rw failed: No such file or directory
+
+Mounting read-write /dev/mtdblock filesystem failed.  Please fix and run
+	mount /dev/mtdblock run/initramfs/rw -t jffs2 -o rw
+or perform a factory reset with the clean-rwfs-filesystem option.
+Fatal error, triggering kernel panic!
+[   20.304181] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000100
+[   20.304963] CPU: 1 UID: 0 PID: 1 Comm: init Not tainted 6.18.50-v00.08.04-g76457d3afe2b #1 NONE 
+[   20.305287] Hardware name: Generic DT based system
+[   20.305672] Call trace: 
+[   20.306295]  unwind_backtrace from show_stack+0x18/0x1c
+[   20.307201]  show_stack from dump_stack_lvl+0x54/0x68
+[   20.307553]  dump_stack_lvl from vpanic+0xd0/0x310
+[   20.307853]  vpanic from trace_suspend_resume+0x0/0x58
+
+U-Boot SPL 2019.04-v00.04.26 (Jun 03 2026 - 07:18:14 +0000)
+Trying to boot from RAM
+## Checking hash(es) for Image uboot ... OK
+## Checking hash(es) for Image fdt ... OK
+
+
+U-Boot 2019.04-v00.04.26 (Jun 03 2026 - 07:18:14 +0000)
+
+SOC: AST2600-A3 
+eSPI Mode: SIO:Enable : SuperIO-2e
+Eth: MAC0: RGMII, MAC1: RGMII, MAC2: RGMII, MAC3: RGMII
+Model: AST2600 EVB
+DRAM:  already initialized, 1008 MiB (capacity:1024 MiB, VGA:64 MiB, ECC:off)
+RC Bridge phy@1e6ed200 : Link down
+MMC:   sdhci_slot0@100: 1, sdhci_slot1@200: 2, emmc_slot0@100: 0
+Loading Environment from SPI Flash... SF: Detected mx66u51235f with page size 256 Bytes, erase size 4 KiB, total 64 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial@1e784000
+Out:   serial@1e784000
+Err:   serial@1e784000
+Model: AST2600 EVB
+Net:   
+Warning: ftgmac@1e660000 (eth0) using random MAC address - ea:00:8b:2e:fe:6a
+eth0: ftgmac@1e660000
+Warning: ftgmac@1e680000 (eth1) using random MAC address - ba:50:18:bd:50:9d
+, eth1: ftgmac@1e680000
+Warning: ftgmac@1e670000 (eth2) using random MAC address - f2:ff:5c:34:5f:d8
+, eth2: ftgmac@1e670000
+Warning: ftgmac@1e690000 (eth3) using random MAC address - 86:d5:a6:3a:05:df
+, eth3: ftgmac@1e690000
+Hit any key to stop autoboot:  2  1  0 
+Boot from spi
+## Loading kernel from FIT Image at 83000000 ...
+   Using 'conf-aspeed-ast2600-evb.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'kernel-1' kernel subimage
+     Description:  Linux kernel
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x83000140
+     Data Size:    6114632 Bytes = 5.8 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x80000000
+     Entry Point:  0x80000000
+     Hash algo:    sha256
+     Hash value:   3c995adf87d4cb2cfcd91633580a29392b0e86f618ce613b1ac71238efddce0b
+   Verifying Hash Integrity ... sha256+ OK
+## Loading ramdisk from FIT Image at 83000000 ...
+   Using 'conf-aspeed-ast2600-evb.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'ramdisk-1' ramdisk subimage
+     Description:  obmc-phosphor-initramfs
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x835e3918
+     Data Size:    1192400 Bytes = 1.1 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha256
+     Hash value:   f05feb4b92ba84bbaaf544a8f4d346639d5918b380601e4cd180e4a8ae765320
+   Verifying Hash Integrity ... sha256+ OK
+## Loading fdt from FIT Image at 83000000 ...
+   Using 'conf-aspeed-ast2600-evb.dtb' configuration
+   Verifying Hash Integrity ... OK
+   Trying 'fdt-aspeed-ast2600-evb.dtb' fdt subimage
+     Description:  Flattened Device Tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x835d4f9c
+     Data Size:    59566 Bytes = 58.2 KiB
+     Architecture: ARM
+     Hash algo:    sha256
+     Hash value:   b82f576966fb4a215fd2aa884b657ff53ce62fea33ba0938ce67b06fe92f11b3
+   Verifying Hash Integrity ... sha256+ OK
+   Booting using the fdt blob at 0x835d4f9c
+   Loading Kernel Image ... OK
+   Loading Ramdisk to 8fedc000, end 8ffff1d0 ... OK
+   Loading Device Tree to 8feca000, end 8fedb8ad ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0xf00
+[    0.000000] Linux version 6.18.50-v00.08.04-g76457d3afe2b (oe-user@oe-host) (arm-openbmc-linux-gnueabi-gcc (GCC) 16.1.0, GNU ld (GNU Binutils) 2.46.1) #1 SMP Thu Oct  1 10:04:58 CST 2026
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: AST2600 EVB
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] Reserved memory: created CMA memory pool at 0xbd000000, size 32 MiB
+[    0.000000] OF: reserved mem: initialized node video, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xbd000000..0xbeffffff (32768 KiB) map reusable video
+[    0.000000] Reserved memory: created CMA memory pool at 0xb9000000, size 64 MiB
+[    0.000000] OF: reserved mem: initialized node rvas, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb9000000..0xbcffffff (65536 KiB) map reusable rvas
+[    0.000000] Reserved memory: created CMA memory pool at 0xb8000000, size 16 MiB
+[    0.000000] OF: reserved mem: initialized node framebuffer, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb8000000..0xb8ffffff (16384 KiB) map reusable framebuffer
+[    0.000000] Reserved memory: created DMA memory pool at 0xb6000000, size 32 MiB
+[    0.000000] OF: reserved mem: initialized node ssp_memory, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb6000000..0xb7ffffff (32768 KiB) nomap non-reusable ssp_memory
+[    0.000000] cma: Reserved 16 MiB at 0xb5000000
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000080000000-0x00000000beffffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x00000000b0ffffff]
+[    0.000000]   node   0: [mem 0x00000000b1000000-0x00000000b111ffff]
+[    0.000000]   node   0: [mem 0x00000000b1120000-0x00000000b5ffffff]
+[    0.000000]   node   0: [mem 0x00000000b6000000-0x00000000b7ffffff]
+[    0.000000]   node   0: [mem 0x00000000b8000000-0x00000000beffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x00000000beffffff]
+[    0.000000] Reserved memory: created DMA memory pool at 0xb1000000, size 0 MiB
+[    0.000000] OF: reserved mem: initialized node mctp0_reserved@b1000000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb1000000..0xb100ffff (64 KiB) nomap non-reusable mctp0_reserved@b1000000
+[    0.000000] Reserved memory: created DMA memory pool at 0xb1010000, size 0 MiB
+[    0.000000] OF: reserved mem: initialized node mctp1_reserved@b1010000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb1010000..0xb101ffff (64 KiB) nomap non-reusable mctp1_reserved@b1010000
+[    0.000000] Reserved memory: created DMA memory pool at 0xb1020000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node bmc-dev-memory@b1020000, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0xb1020000..0xb111ffff (1024 KiB) nomap non-reusable bmc-dev-memory@b1020000
+[    0.000000] percpu: Embedded 19 pages/cpu s45452 r8192 d24180 u77824
+[    0.000000] Kernel command line: console=ttyS4,115200n8 root=/dev/ram rw
+[    0.000000] printk: log buffer data + meta data: 65536 + 204800 = 270336 bytes
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 258048
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] ftrace: allocating 44312 entries in 130 pages
+[    0.000000] ftrace: allocated 130 pages with 2 groups
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.000000] RCU Tasks Rude: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] RCU Tasks Trace: Setting shift to 1 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=2.
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.000000] arch_timer: cp15 timer running at 1200.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1fffffffffffffff max_cycles: 0x114c1bbbeec, max_idle_ns: 440795229572 ns
+[    0.000159] sched_clock: 61 bits at 1200MHz, resolution 0ns, wraps every 2199023255551ns
+[    0.000315] Switching to timer-based delay loop, resolution 0ns
+[    0.006305] Console: colour dummy device 80x30
+[    0.008508] Calibrating delay loop (skipped), value calculated using timer frequency.. 2400.00 BogoMIPS (lpj=12000000)
+[    0.008666] CPU: Testing write buffer coherency: ok
+[    0.013291] pid_max: default: 32768 minimum: 301
+[    0.023037] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.023104] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes, linear)
+[    0.075389] Setting up static identity map for 0x80100000 - 0x80100060
+[    0.076813] rcu: Hierarchical SRCU implementation.
+[    0.076850] rcu: 	Max phase no-delay instances is 1000.
+[    0.078238] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.082570] ASPEED AST2600 rev A3 (05030303)
+[    0.084330] smp: Bringing up secondary CPUs ...
+[    0.094162] smp: Brought up 1 node, 2 CPUs
+[    0.094288] SMP: Total of 2 processors activated (4800.00 BogoMIPS).
+[    0.094353] CPU: All CPU(s) started in SVC mode.
+[    0.105662] Memory: 832236K/1032192K available (14336K kernel code, 1190K rwdata, 3548K rodata, 1024K init, 205K bss, 65496K reserved, 131072K cma-reserved, 0K highmem)
+[    0.115654] devtmpfs: initialized
+[    0.143403] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.180124] posixtimers hash table entries: 1024 (order: 1, 8192 bytes, linear)
+[    0.180447] futex hash table entries: 512 (32768 bytes on 1 NUMA nodes, total 32 KiB, linear).
+[    0.189916] pinctrl core: initialized pinctrl subsystem
+[    0.210968] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.222253] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.227275] thermal_sys: Registered thermal governor 'step_wise'
+[    0.228876] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.228962] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.259338] /ahb/interrupt-controller@40461000: Fixed dependency cycle(s) with /ahb/interrupt-controller@40461000
+[    0.260750] /ahb/apb@1e6e0000/pcie@1e770000: Fixed dependency cycle(s) with /ahb/apb@1e6e0000/pcie@1e770000
+[    0.268907] /ahb/apb@1e6e0000/pcie@1e770000: Fixed dependency cycle(s) with /ahb/apb@1e6e0000/pcie@1e770000
+[    0.281357] /ahb/apb@1e6e0000/pcie@1e770000: Fixed dependency cycle(s) with /ahb/apb@1e6e0000/pcie@1e770000
+[    0.338876] AST2600 secure boot disabled
+[    0.344495] SCSI subsystem initialized
+[    0.345951] usbcore: registered new interface driver usbfs
+[    0.346220] usbcore: registered new interface driver hub
+[    0.346402] usbcore: registered new device driver usb
+[    0.346808] mc: Linux media interface: v0.10
+[    0.346883] videodev: Linux video capture interface: v2.00
+[    0.346984] pps_core: LinuxPPS API ver. 1 registered
+[    0.346998] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.347050] PTP clock support registered
+[    0.362918] mctp: management component transport protocol core
+[    0.362954] NET: Registered PF_MCTP protocol family
+[    0.364552] vgaarb: loaded
+[    0.371121] clocksource: Switched to clocksource arch_sys_counter
+[    0.423982] NET: Registered PF_INET protocol family
+[    0.425256] IP idents hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.431064] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.431177] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.431287] TCP established hash table entries: 8192 (order: 3, 32768 bytes, linear)
+[    0.431643] TCP bind hash table entries: 8192 (order: 5, 131072 bytes, linear)
+[    0.432023] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.433328] UDP hash table entries: 512 (order: 3, 28672 bytes, linear)
+[    0.433559] UDP-Lite hash table entries: 512 (order: 3, 28672 bytes, linear)
+[    0.435171] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.440130] RPC: Registered named UNIX socket transport module.
+[    0.440230] RPC: Registered udp transport module.
+[    0.440247] RPC: Registered tcp transport module.
+[    0.440257] RPC: Registered tcp-with-tls transport module.
+[    0.440267] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.441005] PCI: CLS 0 bytes, default 64
+[    0.451264] workingset: timestamp_bits=30 max_order=18 bucket_order=0
+[    0.461519] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.464856] Trying to unpack rootfs image as initramfs...
+[    0.489095] jffs2: version 2.2. (SUMMARY)  © 2001-2006 Red Hat, Inc.
+[    0.492799] NET: Registered PF_ALG protocol family
+[    0.493678] io scheduler bfq registered
+[    0.562453] aspeed-pcie 1e770000.pcie: host bridge /ahb/apb@1e6e0000/pcie@1e770000 ranges:
+[    0.563253] aspeed-pcie 1e770000.pcie:      MEM 0x0060000000..0x007fffffff -> 0x0060000000
+[    0.578316] ipmi-bt-host 1e789140.ibt: initialised channel 0 at IO address 0xe4
+[    0.591047] aspeed-kcs-bmc 1e789024.kcs: Initialised IPMI client for channel 1
+[    0.591219] aspeed-kcs-bmc 1e789024.kcs: Initialised channel 1 at IO address 0xca0
+[    0.594346] aspeed-kcs-bmc 1e789028.kcs: Initialised IPMI client for channel 2
+[    0.594382] aspeed-kcs-bmc 1e789028.kcs: Initialised channel 2 at IO address 0xca8
+[    0.597684] aspeed-kcs-bmc 1e78902c.kcs: Initialised IPMI client for channel 3
+[    0.597717] aspeed-kcs-bmc 1e78902c.kcs: Initialised channel 3 at IO address 0xca2
+[    0.601400] aspeed-kcs-bmc 1e789114.kcs: Initialised IPMI client for channel 4
+[    0.601438] aspeed-kcs-bmc 1e789114.kcs: Initialised channel 4 at IO address 0xca4
+[    0.603801] aspeed-kcs-bmc 1e789824.pcie-kcs: Initialised IPMI client for channel 5
+[    0.603836] aspeed-kcs-bmc 1e789824.pcie-kcs: Initialised channel 5 at IO address 0x3a0
+[    0.613056] aspeed-kcs-bmc 1e789828.pcie-kcs: Initialised IPMI client for channel 6
+[    0.613096] aspeed-kcs-bmc 1e789828.pcie-kcs: Initialised channel 6 at IO address 0x3a8
+[    0.614409] aspeed-kcs-bmc 1e78982c.pcie-kcs: Initialised IPMI client for channel 7
+[    0.614442] aspeed-kcs-bmc 1e78982c.pcie-kcs: Initialised channel 7 at IO address 0x3a2
+[    0.615404] aspeed-kcs-bmc 1e789914.pcie-kcs: Initialised IPMI client for channel 8
+[    0.615429] aspeed-kcs-bmc 1e789914.pcie-kcs: Initialised channel 8 at IO address 0x3a4
+[    0.644407] aspeed-uart-routing 1e789098.uart-routing: module loaded
+[    0.654759] aspeed-mctp 1e6e8000.mctp: assigned reserved memory node mctp0_reserved@b1000000
+[    0.732540] aspeed-espi 1e6ee000.espi: module loaded
+[    0.735619] Serial: 8250/16550 driver, 17 ports, IRQ sharing enabled
+[    0.782949] printk: legacy console [ttyS4] disabled
+[    0.785970] 1e784000.serial: ttyS4 at MMIO 0x1e784000 (irq = 49, base_baud = 1500000) is a 16550A
+[    0.788034] printk: legacy console [ttyS4] enabled
+[    0.888061] 1e78e000.serial: ttyS2 at MMIO 0x1e78e000 (irq = 50, base_baud = 115384) is a 16550A
+[    0.893065] 1e78f000.serial: ttyS3 at MMIO 0x1e78f000 (irq = 51, base_baud = 115384) is a 16550A
+[    0.895951] 1e790400.serial: ttyS9 at MMIO 0x1e790400 (irq = 52, base_baud = 115384) is a 16550A
+[    0.899200] 1e790500.serial: ttyS10 at MMIO 0x1e790500 (irq = 53, base_baud = 115384) is a 16550A
+[    0.905084] timeriomem_rng 1e6e2524.hwrng: 32bits from 0x(ptrval) @ 1us
+[    0.907284] aspeed-trng 1e6e2530.hwrng: invalid or missing rng-mode, defaulting to 3
+[    0.908696] aspeed-trng 1e6e2530.hwrng: Aspeed Hardware RNG successfully registered
+[    0.913644] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.923874] random: crng init done
+[    0.967439] brd: module loaded
+[    0.983036] loop: module loaded
+[    1.055722] spi-aspeed-smc 1e620000.spi: user mode and normal read are used
+[    1.061129] spi-nor spi0.0: supply vcc not found, using dummy regulator
+[    1.066138] spi-nor spi0.0: BFPT parsing failed. Please consider using SPI_NOR_SKIP_SFDP when declaring the flash
+[    1.066776] spi-nor spi0.0: probe with driver spi-nor failed with error -22
+[    1.069919] spi-nor spi0.1: supply vcc not found, using dummy regulator
+[    1.071118] spi-nor spi0.1: unrecognized JEDEC id bytes: 00 00 00 00 00 00
+[    1.073127] spi-aspeed-smc 1e630000.spi: user mode and normal read are used
+[    1.074712] spi-nor spi1.0: supply vcc not found, using dummy regulator
+[    1.075432] spi-nor spi1.0: BFPT parsing failed. Please consider using SPI_NOR_SKIP_SFDP when declaring the flash
+[    1.075978] spi-nor spi1.0: probe with driver spi-nor failed with error -22
+[    1.077281] spi-aspeed-smc 1e631000.spi: user mode and normal read are used
+[    1.079001] spi-nor spi2.0: supply vcc not found, using dummy regulator
+[    1.080881] spi-nor spi2.0: unrecognized JEDEC id bytes: 00 00 00 00 00 00
+[    1.110030] Freeing initrd memory: 1168K
+[    1.323865] ftgmac100 1e660000.ethernet: Read MAC address ea:00:8b:2e:fe:6a from chip
+[    1.326219] RTL8211E Gigabit Ethernet 1e650000.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650000.mdio-1:00, irq=POLL)
+[    1.328685] ftgmac100 1e660000.ethernet eth0: irq 54, mapped at 9eee072a
+[    1.330993] ftgmac100 1e680000.ethernet: Read MAC address ba:50:18:bd:50:9d from chip
+[    1.332714] RTL8211E Gigabit Ethernet 1e650008.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650008.mdio-1:00, irq=POLL)
+[    1.334179] ftgmac100 1e680000.ethernet eth1: irq 55, mapped at e51af555
+[    1.335604] ftgmac100 1e670000.ethernet: Read MAC address f2:ff:5c:34:5f:d8 from chip
+[    1.336243] RTL8211E Gigabit Ethernet 1e650010.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650010.mdio-1:00, irq=POLL)
+[    1.337544] ftgmac100 1e670000.ethernet eth2: irq 56, mapped at c6ebc8df
+[    1.338590] ftgmac100 1e690000.ethernet: Read MAC address 86:d5:a6:3a:05:df from chip
+[    1.339162] RTL8211E Gigabit Ethernet 1e650018.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650018.mdio-1:00, irq=POLL)
+[    1.340860] ftgmac100 1e690000.ethernet eth3: irq 57, mapped at 0a912bf5
+[    1.341869] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.342070] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.342474] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.342757] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.343234] MCTP I2C interface driver
+[    1.343839] usbcore: registered new interface driver mctp-usb
+[    1.344105] usbcore: registered new interface driver asix
+[    1.344363] usbcore: registered new interface driver ax88179_178a
+[    1.344716] usbcore: registered new interface driver cdc_ether
+[    1.345055] usbcore: registered new interface driver cdc_eem
+[    1.345704] usbcore: registered new interface driver net1080
+[    1.346430] usbcore: registered new interface driver cdc_subset
+[    1.346874] usbcore: registered new interface driver zaurus
+[    1.347366] usbcore: registered new interface driver cdc_ncm
+[    1.347652] usbcore: registered new interface driver r8153_ecm
+[    1.362132] platform-uhci 1e6b0000.usb: Detected 2 ports from device-tree
+[    1.362513] platform-uhci 1e6b0000.usb: Enabled Aspeed implementation workarounds
+[    1.362815] platform-uhci 1e6b0000.usb: Enabled Aspeed UHCI FIFO/DMA workaround
+[    1.371197] ehci-platform 1e6a3000.usb: EHCI Host Controller
+[    1.372794] ehci-platform 1e6a3000.usb: new USB bus registered, assigned bus number 1
+[    1.374924] platform-uhci 1e6b0000.usb: Generic UHCI Host Controller
+[    1.375345] platform-uhci 1e6b0000.usb: new USB bus registered, assigned bus number 2
+[    1.376536] platform-uhci 1e6b0000.usb: irq 59, io mem 0x1e6b0000
+[    1.377090] platform-uhci 1e6b0000.usb: Device does not have specific DMA pool
+[    1.386827] ehci-platform 1e6a3000.usb: irq 58, io mem 0x1e6a3000
+[    1.388853] usb usb2: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 6.18
+[    1.389149] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.389384] usb usb2: Product: Generic UHCI Host Controller
+[    1.389750] usb usb2: Manufacturer: Linux 6.18.50-v00.08.04-g76457d3afe2b uhci_hcd
+[    1.391028] usb usb2: SerialNumber: 1e6b0000.usb
+[    1.396181] hub 2-0:1.0: USB hub found
+[    1.397168] hub 2-0:1.0: 2 ports detected
+[    1.404282] usbcore: registered new interface driver cdc_acm
+[    1.404547] cdc_acm: USB Abstract Control Model driver for USB modems and ISDN adapters
+[    1.405450] usbcore: registered new interface driver usb-storage
+[    1.421406] ehci-platform 1e6a3000.usb: USB 2.0 started, EHCI 1.00
+[    1.423115] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.18
+[    1.423389] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.423628] usb usb1: Product: EHCI Host Controller
+[    1.423805] usb usb1: Manufacturer: Linux 6.18.50-v00.08.04-g76457d3afe2b ehci_hcd
+[    1.424143] usb usb1: SerialNumber: 1e6a3000.usb
+[    1.426234] hub 1-0:1.0: USB hub found
+[    1.426767] hub 1-0:1.0: 6 ports detected
+[    1.427274] aspeed_vhub 1e6a0000.usb-vhub: Initialized virtual hub in USB2 mode
+[    1.435879] aspeed-rtc 1e781000.rtc: registered as rtc0
+[    1.436985] aspeed-rtc 1e781000.rtc: setting system clock to 1970-01-01T01:01:01 UTC (3661)
+[    1.438249] i2c_dev: i2c /dev entries driver
+[    1.448879] i2c_ast2600 1e78a280.i2c: i2c [4]: adapter [100 KHz] mode [1] version [0]
+[    1.454592] i2c_ast2600 1e78a300.i2c: i2c [5]: adapter [100 KHz] mode [1] version [0]
+[    1.458767] ipmb-dev 6-0012: i2c_slave_register: client slave flag not set. You might see address collisions
+[    1.459407] i2c_ast2600 1e78a380.i2c: i2c [6]: adapter [100 KHz] mode [1] version [0]
+[    1.461103] platform-uhci 1e6b0000.usb: Controller not stopped yet!
+[    1.464885] at24 7-0050: supply vcc not found, using dummy regulator
+[    1.469267] at24 7-0050: 1024 byte 24c08 EEPROM, writable, 16 bytes/write
+[    1.469800] i2c_ast2600 1e78a400.i2c: i2c [7]: adapter [100 KHz] mode [1] version [0]
+[    1.473564] i2c_ast2600 1e78a480.i2c: i2c [8]: adapter [100 KHz] mode [1] version [0]
+[    1.476669] i2c_ast2600 1e78a500.i2c: i2c [9]: adapter [100 KHz] mode [1] version [0]
+[    3.632771] i3c i3c-0: Enter halt state failed: -110 0x0 0x0
+[    3.633284] i3c i3c-0: SDA stuck low! Try to recover the bus...
+[    3.633842] i3c i3c-0: Failed to recover the bus
+[    4.754160] i3c i3c-0: Exit halt state failed: -110 0x0 0x0
+[    4.756007] ast2600-i3c-master 1e7a2000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[    6.930877] i3c i3c-1: Enter halt state failed: -110 0x0 0x0
+[    6.931144] i3c i3c-1: SDA stuck low! Try to recover the bus...
+[    6.931507] i3c i3c-1: Failed to recover the bus
+[    8.073212] i3c i3c-1: Exit halt state failed: -110 0x0 0x0
+[    8.073782] ast2600-i3c-master 1e7a3000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   10.298626] i3c i3c-2: Enter halt state failed: -110 0x0 0x0
+[   10.298921] i3c i3c-2: SDA stuck low! Try to recover the bus...
+[   10.299380] i3c i3c-2: Failed to recover the bus
+[   11.442397] i3c i3c-2: Exit halt state failed: -110 0x0 0x0
+[   11.443172] ast2600-i3c-master 1e7a4000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   13.637308] i3c i3c-3: Enter halt state failed: -110 0x0 0x0
+[   13.637579] i3c i3c-3: SDA stuck low! Try to recover the bus...
+[   13.637949] i3c i3c-3: Failed to recover the bus
+[   14.771839] i3c i3c-3: Exit halt state failed: -110 0x0 0x0
+[   14.772400] ast2600-i3c-master 1e7a5000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   17.010069] i3c i3c-5: Enter halt state failed: -110 0x0 0x0
+[   17.010367] i3c i3c-5: SDA stuck low! Try to recover the bus...
+[   17.011608] i3c i3c-5: Failed to recover the bus
+[   18.152663] i3c i3c-5: Exit halt state failed: -110 0x0 0x0
+[   18.153132] ast2600-i3c-master 1e7a7000.i3c: probe with driver ast2600-i3c-master failed with error -110
+[   18.162907] aspeed-video 1e700000.video: irq 74
+[   18.163526] aspeed-video 1e700000.video: assigned reserved memory node video
+[   18.198498] aspeed-video 1e700000.video: alloc mem size(18493440) at 0xbd000000 for pool
+[   18.204589] aspeed-video 1e700000.video: aspeed-video0 registered as /dev/video0
+[   18.205500] Driver for 1-wire Dallas network protocol.
+[   18.207665] adt7475 7-002e: Error configuring attenuator bypass
+[   18.209413] adt7475 7-002e: ADT7490 device, revision 2
+[   18.209720] adt7475 7-002e: Optional features: in4 pwm2
+[   18.209987] adt7475 7-002e: Bypassing attenuators on: in1 in3 in4
+[   18.219662] lm75 8-004d: supply vs not found, using dummy regulator
+[   18.222063] hwmon hwmon2: temp1_input not attached to any thermal zone
+[   18.222448] lm75 8-004d: hwmon2: sensor 'lm75'
+[   18.237615] device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+[   18.240052] sdhci: Secure Digital Host Controller Interface driver
+[   18.241791] sdhci: Copyright(c) Pierre Ossman
+[   18.242361] sdhci-pltfm: SDHCI platform and OF driver helper
+[   18.251822] aspeed_crypto 1e6d0000.crypto: will run requests pump with realtime priority
+[   18.253137] sdhci-aspeed 1e750100.sdhci: Configured for slot 0
+[   18.267140] aspeed_crypto 1e6d0000.crypto: will run requests pump with realtime priority
+[   18.275687] aspeed_crypto 1e6d0000.crypto: Aspeed Crypto Accelerator successfully registered
+[   18.294613] aspeed_acry 1e6fa000.crypto: will run requests pump with realtime priority
+[   18.312295] aspeed_acry 1e6fa000.crypto: Aspeed ACRY Accelerator successfully registered
+[   18.315605] usbcore: registered new interface driver usbhid
+[   18.315956] usbhid: USB HID core driver
+[   18.325140] mmc0: SDHCI controller on 1e750100.sdhci [1e750100.sdhci] using ADMA
+[   18.365235] NET: Registered PF_INET6 protocol family
+[   18.388897] Segment Routing with IPv6
+[   18.389310] In-situ OAM (IOAM) with IPv6
+[   18.390187] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[   18.398805] NET: Registered PF_PACKET protocol family
+[   18.401260] 8021q: 802.1Q VLAN Support v1.8
+[   18.402654] Registering SWP/SWPB emulation handler
+[   18.448320] aspeed-pcie 1e770000.pcie: host bridge /ahb/apb@1e6e0000/pcie@1e770000 ranges:
+[   18.448848] aspeed-pcie 1e770000.pcie:      MEM 0x0060000000..0x007fffffff -> 0x0060000000
+[   18.490876] mmc0: Failed to initialize a non-removable card
+[   18.564259] aspeed-pcie 1e770000.pcie: PCI host bridge to bus 0000:00
+[   18.565686] pci_bus 0000:00: root bus resource [bus 00-ff]
+[   18.566492] pci_bus 0000:00: root bus resource [mem 0x60000000-0x7fffffff]
+[   18.569726] aspeed-pcie 1e770000.pcie: 00:08.0 CR tx timeout sts: 0x00000000
+[   18.574230] PCI: bus0: Fast back to back transfers enabled
+[   18.575194] pci_bus 0000:00: resource 4 [mem 0x60000000-0x7fffffff]
+[   18.577262] aspeed_usb_phy 1e6a2800.uphyb: Initialized USB PHY
+[   18.584840] sdhci-aspeed 1e740100.sdhci: Configured for slot 0
+[   18.585150] sdhci-aspeed 1e740200.sdhci: Configured for slot 1
+[   18.590936] netconsole: network logging started
+[   18.593517] clk: Disabling unused clocks
+[   18.648117] mmc1: SDHCI controller on 1e740100.sdhci [1e740100.sdhci] using ADMA
+[   18.649654] mmc2: SDHCI controller on 1e740200.sdhci [1e740200.sdhci] using ADMA
+[   18.762161] Freeing unused kernel image (initmem) memory: 1024K
+[   18.838279] Run /init as init process
+grep: /sys/class/mtd/*/name: No such file or directory
+grep: /sys/class/mtd/*/name: No such file or directory
+grep: /sys/class/mtd/*/name: No such file or directory
+grep: /sys/class/mtd/*/name: No such file or directory
+rofs =  squashfs   rwfs =  jffs2
+[   20.184398] /dev/mtdblock: Can't lookup blockdev
+mount: mounting /dev/mtdblock on run/initramfs/ro failed: No such file or directory
+[   20.213122] MTD: Couldn't look up '/dev/mtdblock': -2
+mount: mounting /dev/mtdblock on run/initramfs/rw failed: No such file or directory
+
+Mounting read-write /dev/mtdblock filesystem failed.  Please fix and run
+	mount /dev/mtdblock run/initramfs/rw -t jffs2 -o rw
+or perform a factory reset with the clean-rwfs-filesystem option.
+Fatal error, triggering kernel panic!
+[   20.318206] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000100
+[   20.319165] CPU: 0 UID: 0 PID: 1 Comm: init Not tainted 6.18.50-v00.08.04-g76457d3afe2b #1 NONE 
+[   20.319689] Hardware name: Generic DT based system
+[   20.320024] Call trace: 
+[   20.320774]  unwind_backtrace from show_stack+0x18/0x1c
+[   20.322239]  show_stack from dump_stack_lvl+0x54/0x68
+[   20.322595]  dump_stack_lvl from vpanic+0xd0/0x310
+[   20.322812]  vpanic from trace_suspend_resume+0x0/0x58

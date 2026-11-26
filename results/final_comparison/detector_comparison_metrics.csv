@@ -1,0 +1,13 @@
+scenario,dataset,detector,source_file,samples,scored_samples,unscored_samples,coverage_percent,TP,TN,FP,FN,precision,recall,F1,false_alarm_rate,specificity
+Voltage,Normal holdout,Static Threshold,voltage_normal_holdout_threshold_predictions.csv,324,324,0,100.0,0,324,0,0,,,,0.0,1.0
+Voltage,Normal holdout,Isolation Forest,voltage_normal_holdout_iforest_predictions.csv,324,324,0,100.0,0,324,0,0,,,,0.0,1.0
+Voltage,Normal holdout,Bi-LSTM v2,lstm_v2/voltage_normal_holdout_lstm_predictions.csv,324,324,0,100.0,0,320,4,0,0.0,,,0.012345679012345678,0.9876543209876543
+Voltage,Controlled evaluation,Static Threshold,voltage_controlled_evaluation_threshold_predictions.csv,140,140,0,100.0,0,40,0,100,,0.0,,0.0,1.0
+Voltage,Controlled evaluation,Isolation Forest,voltage_controlled_evaluation_iforest_predictions.csv,140,140,0,100.0,0,40,0,100,,0.0,,0.0,1.0
+Voltage,Controlled evaluation,Bi-LSTM v2,lstm_v2/voltage_controlled_evaluation_lstm_predictions.csv,140,140,0,100.0,100,32,8,0,0.9259259259259259,1.0,0.9615384615384615,0.2,0.8
+Thermal,Normal holdout,Static Threshold,thermal_normal_holdout_threshold_predictions.csv,324,324,0,100.0,0,324,0,0,,,,0.0,1.0
+Thermal,Normal holdout,Isolation Forest,thermal_v3_normal_holdout_iforest_predictions.csv,324,324,0,100.0,0,324,0,0,,,,0.0,1.0
+Thermal,Normal holdout,Bi-LSTM v2,lstm_v2/thermal_normal_holdout_lstm_predictions.csv,324,324,0,100.0,0,324,0,0,,,,0.0,1.0
+Thermal,Controlled evaluation,Static Threshold,thermal_controlled_evaluation_threshold_predictions.csv,60,60,0,100.0,30,30,0,0,1.0,1.0,1.0,0.0,1.0
+Thermal,Controlled evaluation,Isolation Forest,thermal_v3_controlled_evaluation_iforest_predictions.csv,60,60,0,100.0,0,30,0,30,,0.0,,0.0,1.0
+Thermal,Controlled evaluation,Bi-LSTM v2,lstm_v2/thermal_controlled_evaluation_lstm_predictions.csv,60,60,0,100.0,30,28,2,0,0.9375,1.0,0.967741935483871,0.06666666666666667,0.9333333333333333
