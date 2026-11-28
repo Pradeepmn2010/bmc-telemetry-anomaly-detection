@@ -1,0 +1,11 @@
+--- a/include/hw/sensor/tmp105.h
++++ b/include/hw/sensor/tmp105.h
+@@ -40,6 +40,8 @@
+     uint8_t pointer;
+     uint8_t config;
+     int16_t temperature;
++    int16_t held_temperature;
++    bool output_stuck;
+     int16_t limit[2];
+     int faults;
+     uint8_t alarm;
